@@ -40,5 +40,5 @@ Give me some BOOKS about Acupuncture.
 What are Allergies?
 
 # 穴位
-請列出跟肺臟有關的穴位
+請列出跟肺臟有關的穴道位置
 ```
