@@ -13,6 +13,7 @@ cp Medical_Chatbot.pdf data/
 ```
 ### 2. 利用singularity啟動程式 (請自行修改第四行的port)
 ```
+ps aux | grep chainlit | awk '{print $2}' | xargs kill -9 
 ml libs/singularity/3.10.2
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip3 install -r requirements.txt
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
