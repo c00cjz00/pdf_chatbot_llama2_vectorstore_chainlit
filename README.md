@@ -15,11 +15,21 @@ cp Medical_Chatbot.pdf data/
 ml libs/singularity/3.10.2
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip3 install -r requirements.txt
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif chainlit run model.py --port 9000
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model.py --port 9000
 ```
 
+### 3. ssh forwarding (修改gn1101為你機器的hostname)
+a. ssh forwarding
+```
+ssh -L 9000:gn1101:9000 xxxx@ln01.twcc.ai
+```
 
-### 3. 問題範例
+b. 打開本地端瀏覽器
+```
+http://localhost:9000
+```
+
+### 4. 問題範例
 ```
 # 針灸
 ware is Acupuncture?
