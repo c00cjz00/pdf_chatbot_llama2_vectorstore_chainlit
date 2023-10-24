@@ -1,4 +1,5 @@
-# pdf_chatbot_llama2_pinecone
+# pdf_chatbot_llama2_vectorstore_chainlit
+
 ### 0. 下載程式碼
 ```
 git clone https://github.com/c00cjz00/pdf_chatbot_llama2_vectorstore_chainlit.git
