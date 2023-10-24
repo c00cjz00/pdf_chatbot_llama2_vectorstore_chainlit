@@ -34,7 +34,7 @@ http://localhost:9000
 ### 4. 問題範例
 ```
 # 針灸
-ware is Acupuncture?
+What is Acupuncture?
 Give me some BOOKS about Acupuncture.
 
 # 過敏
