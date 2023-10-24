@@ -118,9 +118,9 @@ async def main(message: cl.Message):
     sources = res["source_documents"]
 
     if sources:
-        answer += f"\nSources:" + str(sources)
+        answer += f"\n\n\n資料來源, Sources:" + str(sources)
     else:
-        answer += "\nNo sources found"
+        answer += "\n\n\nNo sources found"
 
     await cl.Message(content=answer).send()
     
