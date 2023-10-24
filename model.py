@@ -16,7 +16,6 @@ import transformers
 import torch
 from langchain.llms import HuggingFacePipeline
 from transformers import AutoTokenizer
-warnings.filterwarnings('ignore')
 
 # 03: custom_prompt_template
 custom_prompt_template = """Use the following pieces of information to answer the user's question.
