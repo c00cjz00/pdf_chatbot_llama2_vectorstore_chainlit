@@ -16,18 +16,18 @@ cp Medical_Chatbot.pdf data/
 ```
 ps aux | grep chainlit | awk '{print $2}' | xargs kill -9 
 ml libs/singularity/3.10.2
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install -r requirements.txt
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model.py --port 9000
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif pip install -r requirements.txt
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif python3 ingest.py
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif ~/.local/bin/chainlit run model.py --port 9000
 ```
 #### 2.2 模型為Llama2 7B GPTQ (請自行修改第六行的port)
 ```
 ps aux | grep chainlit | awk '{print $2}' | xargs kill -9 
 ml libs/singularity/3.10.2
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install -r requirements.txt
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/  # Use cu117 if on CUDA 11.7
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
-singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model_gptq.py --port 9000
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif pip install -r requirements.txt
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/  # Use cu117 if on CUDA 11.7
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif python3 ingest.py
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.1.0-cuda11.8-cudnn8-devel.sif ~/.local/bin/chainlit run model_gptq.py --port 9000
 ```
 
 ### 3. ssh forwarding (修改gn1101為你機器的hostname, 根據項目2 修改9000 為你的port)
