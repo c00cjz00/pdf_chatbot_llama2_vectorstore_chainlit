@@ -68,6 +68,35 @@ watch -n0 nvidia-smi
 /work/$(whoami)/chainlit_demo
 ```
 
+
+### 4 利用slurm啟動程式 並採用自己的PDF (更新步驟3)
+```
+# 1. 登入 T2, 建議使用mobaxterm  
+ssh c00cjz00 ln01.twcc.ai
+
+# 2. 建立一個slurm log 紀錄目錄, 並進入此目錄
+mkdir -p ~/genai_log; cd ~/genai_log
+
+# 3. 輸入派送工作指令, 請更改計畫代號MST110386 及時間0-1:00:00 (一小時),  並將/home/g00cjz00/pdf 改為你放置PDF的資料夾
+#sbatch -A MST110386 --time=0-1:00:00 /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai.slurm
+sbatch -A MST110386 --time=0-1:00:00 --export=PDF_FOLDER=/home/g00cjz00/pdf /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai_ur_pdf.slurm
+
+# 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out, (第一次執行請等3啟動後約五分鐘後再執行4動作, 之後每一次約等一分鐘)
+****************  請輸入下方指令  *****************
+### STEP1: Execute cmd in your client below
+ssh -L 48580:gn0416:48580 g00cjz00@ln01.twcc.ai
+### STEP2: Open url below
+http://localhost:48580/
+### STEP3: 接續STEP1畫面, 進入計算節點, 觀看計算資源狀況 (OPTION)
+ssh $(squeue -u $(whoami)|grep _t2g_  | awk '{print $8}')
+watch -n0 nvidia-smi
+### STEP4: 刪除計算資源(OPTION)
+ scancel $(squeue -u $(whoami)|grep _t2g_  | awk '{print $1}')
+
+# 5. chainlit 執行結果, 儲存於下方目錄
+/work/$(whoami)/chainlit_demo
+```
+
 ### 5. 問題範例
 ```
 # 針灸
