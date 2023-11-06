@@ -11,17 +11,24 @@ cd pdf_chatbot_llama2_vectorstore_chainlit
 mkdir data
 cp Medical_Chatbot.pdf data/
 ```
-### 2. 利用singularity啟動程式 (請自行修改第四行的port)
+### 2 利用singularity啟動程式, 請選擇2.1 or 2.2
+#### 2.1 模型為Llama2 7B (請自行修改第五行的port)
 ```
 ps aux | grep chainlit | awk '{print $2}' | xargs kill -9 
 ml libs/singularity/3.10.2
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install -r requirements.txt
-# For gptq
-##singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/  # Use cu117 if on CUDA 11.7
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model.py --port 9000
-# Or
-##singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model_gptq.py --port 9000
+```
+
+#### 2.2 模型為Llama2 7B GPTQ (請自行修改第六行的port)
+```
+ps aux | grep chainlit | awk '{print $2}' | xargs kill -9 
+ml libs/singularity/3.10.2
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install -r requirements.txt
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/  # Use cu117 if on CUDA 11.7
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
+singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model_gptq.py --port 9000
 ```
 
 ### 3. ssh forwarding (修改gn1101為你機器的hostname, 根據項目2 修改9000 為你的port)
