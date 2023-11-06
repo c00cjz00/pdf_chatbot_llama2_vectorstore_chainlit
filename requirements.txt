@@ -5,8 +5,8 @@ accelerate
 bitsandbytes
 transformers
 sentence_transformers
-faiss-cpu
-faiss-gpu
+faiss_cpu
+faiss_gpu
 chainlit
 huggingface_hub
 ctransformers
