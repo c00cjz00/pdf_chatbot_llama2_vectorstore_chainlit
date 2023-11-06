@@ -52,7 +52,7 @@ mkdir -p ~/genai_log; cd ~/genai_log
 # 3. 輸入派送工作指令, 請更改計畫代號MST110386 及時間0-1:00:00 (一小時)
 sbatch -A MST110386 --time=0-1:00:00 /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai.slurm
 
-# 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out, 流程3啟動後約一分鐘後再執行4動作
+# 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out, (第一次執行請等3啟動後約五分鐘後再執行4動作, 之後每一次約等一分鐘)
 ****************  請輸入下方指令  *****************
 ### STEP1: Execute cmd in your client below
 ssh -L 48580:gn0416:48580 g00cjz00@ln01.twcc.ai
