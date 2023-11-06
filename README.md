@@ -54,14 +54,14 @@ sbatch -A MST110386 --time=0-1:00:00 /work/u00cjz00/slurm_jobs/github/pdf_chatbo
 
 # 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out, 流程3啟動後約一分鐘後再執行4動作
 ****************  請輸入下方指令  *****************
-# STEP1: Execute cmd in your client below
+### STEP1: Execute cmd in your client below
 ssh -L 48580:gn0416:48580 g00cjz00@ln01.twcc.ai
-# STEP2: Open url below
+### STEP2: Open url below
 http://localhost:48580/
-# STEP3: 接續STEP1畫面, 進入計算節點, 觀看計算資源狀況 (OPTION)
+### STEP3: 接續STEP1畫面, 進入計算節點, 觀看計算資源狀況 (OPTION)
 ssh $(squeue -u $(whoami)|grep _t2g_  | awk '{print $8}')
 watch -n0 nvidia-smi
-# STEP4: 刪除計算資源(OPTION)
+### STEP4: 刪除計算資源(OPTION)
  scancel $(squeue -u $(whoami)|grep _t2g_  | awk '{print $1}')
 
 # 5. chainlit 執行結果, 儲存於下方目錄
