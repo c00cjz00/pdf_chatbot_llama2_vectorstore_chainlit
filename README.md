@@ -77,9 +77,9 @@ ssh c00cjz00 ln01.twcc.ai
 # 2. 建立一個slurm log 紀錄目錄, 並進入此目錄
 mkdir -p ~/genai_log; cd ~/genai_log
 
-# 3. 輸入派送工作指令, 請更改計畫代號MST110386 及時間0-1:00:00 (一小時),  並將/home/g00cjz00/pdf 改為你放置PDF的資料夾
+# 3. 輸入派送工作指令, 請更改計畫代號MST110386 及時間0-1:00:00 (一小時),  並將/work/u00cjz00/slurm_jobs/github/pdf 改為你放置PDF的資料夾
 #sbatch -A MST110386 --time=0-1:00:00 /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai.slurm
-sbatch -A MST110386 --time=0-1:00:00 --export=PDF_FOLDER=/home/g00cjz00/pdf /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai_ur_pdf.slurm
+sbatch -A MST110386 --time=0-1:00:00 --export=PDF_FOLDER=/work/u00cjz00/slurm_jobs/github/pdf /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai_ur_pdf.slurm
 
 # 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out, (第一次執行請等3啟動後約五分鐘後再執行4動作, 之後每一次約等一分鐘)
 ****************  請輸入下方指令  *****************
