@@ -105,7 +105,7 @@ def load_llm():
 def qa_bot():
 #    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",
 #                                       model_kwargs={'device': 'cpu'})
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    embeddings = HuggingFaceEmbeddings(model_name='/work/u00cjz00/nvidia/all-MiniLM-L6-v2')
     db = FAISS.load_local(DB_FAISS_PATH, embeddings)
     llm = load_llm()
     qa_prompt = set_custom_prompt()
@@ -147,6 +147,4 @@ async def main(message: cl.Message):
         answer += "\n\n\nNo sources found"
 
     await cl.Message(content=answer).send()
-    
-    
     
