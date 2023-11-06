@@ -9,3 +9,5 @@ faiss_cpu
 chainlit
 huggingface_hub
 ctransformers
+optimum
+
