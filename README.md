@@ -20,7 +20,6 @@ singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudn
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif python3 ingest.py
 singularity exec --nv -B /work /work/u00cjz00/nvidia/pytorch_2.0.1-cuda11.7-cudnn8-runtime.sif ~/.local/bin/chainlit run model.py --port 9000
 ```
-
 #### 2.2 模型為Llama2 7B GPTQ (請自行修改第六行的port)
 ```
 ps aux | grep chainlit | awk '{print $2}' | xargs kill -9 
@@ -53,8 +52,7 @@ mkdir -p ~/genai_log; cd ~/genai_log
 # 3. 輸入派送工作指令, 請更改計畫代號MST110386 及時間0-1:00:00 (一小時)
 sbatch -A MST110386 --time=0-1:00:00 /work/u00cjz00/slurm_jobs/github/pdf_chatbot_llama2_vectorstore_chainlit/genai.slurm
 
-
-# 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out
+# 4. 請打開slurm log 紀錄目錄裡, 最新一筆紀錄檔 genai_xxxxxxx.out, 流程3啟動後約一分鐘後再執行4動作
 ****************  請輸入下方指令  *****************
 # STEP1: Execute cmd in your client below
 ssh -L 48580:gn0416:48580 g00cjz00@ln01.twcc.ai
